@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>usefragment</title>
+</head>
+<body>
+    <p th:include="~{fragment :: template}"></p>
+    <p th:include="fragment">引用整个文件</p>
+    <p th:include="fragment :: html">引用整个文件</p>
+    <p th:include="test/fragment :: top">引用其它目录中的模板</p>
+</body>
+</html>

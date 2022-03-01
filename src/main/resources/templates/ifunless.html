@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ifunless</title>
+</head>
+<body>
+    <div>
+        <p th:if="${age<18}">年龄太小</p>
+        <p th:unless="${age<40}">年龄太大</p><!--和if正好相反-->
+    </div>
+</body>
+</html>

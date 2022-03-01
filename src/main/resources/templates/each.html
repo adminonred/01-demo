@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>each</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>age</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user,userStat:${users}" th:inline="text">
+                <td>[[${user.id}]]</td>
+                <td>[[${user.name}]]</td>
+                <td>[[${user.age}]]</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

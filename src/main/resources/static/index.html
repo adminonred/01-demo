@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+       function ajax() {
+           //创建异步对象
+           var ajax=new XMLHttpRequest()
+           //绑定事件
+           ajax.onreadystatechange=function() {
+               //alert(ajax.readyState)//注意只有当服务器有数据返回时才有状态3
+               //处理服务器返回数据，更新当前页面
+               if(ajax.readyState==4&&ajax.status==200) {
+                    document.getElementById("show").innerText=ajax.responseText
+               }
+           }
+           //初始化请求数据
+           ajax.open("get","ajax",true)//true表示异步（不用等待请求执行完成后面的代码可以同时执行），false表示同步
+           //发起请求
+           ajax.send()
+       }
+    </script>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <a href="usefragment">测试模板</a><br>
+    <a href="each">测试循环</a><br>
+    <a href="ifunless">测试if、unless</a><br>
+    <form action="in" method="post">
+        姓名<input type="text" name="name"><br>
+        年龄<input type="text" name="age"><br>
+        <input type="submit" value="添加"><br>
+    </form>
+    <form action="drop">
+        id<input type="text" name="id"><br>
+        <input type="submit" value="删除">
+    </form>
+    <form action="update">
+        年龄<input type="text" name="age"><br>
+        姓名<input type="text" name="name"><br>
+        <input type="submit" value="修改">
+    </form>
+    <a href="get">查询</a><br>
+    <p id="show"></p>
+    <input type="submit" onclick="ajax()" value="ajax">
+</body>
+</html>

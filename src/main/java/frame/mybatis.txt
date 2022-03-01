@@ -1,0 +1,11 @@
+创建mybatis主配置文件，配置mybatis环境：数据源名称、事务类型、连接数据库的四要素，告诉mybatis要执行的sql语句的位置，加入日志配置。。。
+编写Dao接口，编写Dao接口Mapper映射文件以.xml结尾，建议与Dao接口同名用来使用动态代理，映射文件namespace自定义唯一字符串，
+推荐使用dao接口全限定名称，sql语句自定义名称id推荐使用dao接口中的方法名称，用映射文件namespace+"."+id唯一表示该sql语句
+步骤：
+1.读取mybatis主配置文件：InputStream in=Resources.getResourceAsStream(config)
+2.创建SqlSessionFactory对象：SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(in)
+3.获取SqlSession：SqlSession session=factory.openSession();
+4.指定要执行sql语句的标识，sql映射文件中的namespace+"."+标签的id
+5.调用session中的方法（传入sql语句标识以及条件）操作数据库返回结果
+其中1、2、3步是固定操作可以写成一个工具类，4、5步可以用动态代理来实现：session.getMapper(Dao接口的Class类dao.class)，只要映射文件的命名
+符合标准，通过反射获取到Dao接口的全限定名称和方法名称即namespace和标签的id用来生成sql语句标识，然后通过动态代理创建Dao接口的实现类
